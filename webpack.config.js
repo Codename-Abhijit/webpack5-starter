@@ -1,6 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// You can add the BundleAnalyzerPlugin() inside the plugins of webpack config to analyze the bundle.
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     mode: 'development',
     entry: {
@@ -9,7 +12,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
-        clean: true
+        clean: true,
+        assetModuleFilename: '[name][ext]'
     },
     devtool: 'source-map',
     devServer: {
